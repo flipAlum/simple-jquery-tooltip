@@ -1,0 +1,57 @@
+h3. Summary:
+This is a small, fast and semantic plugin which utilizes event delegation and wraps the title attribute content so that it may be styled as a tooltip.
+The styled tooltip replaces the native browser style title display but does not permanently alter the attribute.
+The tooltip element will be positioned relative to the title containing element on mouse over.
+
+h3. Dependencies
+
+* "jQuery > 1.4":http://jquery.com/
+
+h3. Basic Use:
+
+Make sure at least some elements have a title attribute.
+
+<code>
+// treat all title attributes within the container as tooltips
+$(document).ready(function() {
+	$(container).toolTip();
+})
+</code>
+
+h3. Available Options:
+
+//show hide with a fade effect always false for browsers that don't support opacity
+* fade: true
+//time before the tooltip appears
+* delay: 1000
+//class to add to the tooltip
+* elementClass: "ui-tooltip"
+//filter out unwanted elems which have a title attr
+* filter: ".someElem, #someOtherElem"
+// wrapper template for tooltip must contain at least a wrapper element and a child element with id of tooltip-content
+* template: ""
+//speed of the fade effect
+* fadeSpeed: "fast"
+
+h3. License (MIT):
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+

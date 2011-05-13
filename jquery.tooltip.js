@@ -9,16 +9,15 @@
             hoverContent: "",
             //class to add to the tooltip
             elementClass: "ui-tooltip",
-            //visual type of tooltip
-            type: "",
+            // wrapper template for tooltip
+            template: "",
             //filter out unwanted elems which have a title attr
             filter: null,
             //speed of the fade effect
             fadeSpeed: "fast",
             //length of a string before it is broken for IE
             lineLength: 38
-        },
-                            options || {});
+        }, options || {});
 
 
         var target = "",
@@ -29,25 +28,23 @@
             pointerHeight = 15,
             targetSet = "*[title]:not(" + options.filter + ")",
             mouseOutTarget = "",
-            title = ""
-            dirtyHtml = new RegExp(".*<script>.*</script>.*");
+			toolTipContent = null,
+            title = "";
 
-        //if browser does'nt support opacity we are going to disable fadein
+        //if browser doesn't support opacity we are going to disable fadein
         !$.support.opacity ? options.fade = false : null;
 
         //define html structure for differant types of tooltip
-        switch (options.type) {
-            case "rounded":
-                toolTip = $("<div id='hover-element' class='rounded'><div class='hover-inner-container'><div class='top-tooltip'></div><span id='tooltip-content'></span></div><div class='bottom-tooltip'><div></div></div><div id='tooltip-pointer'></div></div>");
-                break;
-            default:
-                toolTip = $("<div id='hover-element' class='default'><span id='tooltip-content'></span></div>");
-        }
+        if (options.template !== "") {
+            toolTip = $(options.template);
+        } else {
+			toolTip = $("<div class='tooltip-wrapper default'><span id='tooltip-content' class='tooltip-inner-content'></span></div>");
+		}
 
         //cache the tooltip content elem
-        var toolTipContent = $(toolTip).find("#tooltip-content");
+        toolTipContent = $(toolTip).find("#tooltip-content");
 
-        //mouse enters trigger, tooltip is created, styled and shown after delay
+        //mouse enters trigger, tooltip is created, positioned and shown after delay
         //mouseover event deligation
         $(this).live("mouseover.tooltip", function(event) {
 
@@ -93,111 +90,6 @@
                     defaultPosition();
             }
 
-            //apply positioning values
-            function roundedPosition() {
-
-                //the title needs to be modified for ie since ie sucks and wont follow the css line-break rule
-                var stringLen = options.lineLength;
-
-                if ($.browser.msie && title.length >= stringLen) {
-                    if (title.indexOf(" ") >= stringLen || title.indexOf(" ") == -1) {
-                        var charLimit = stringLen;
-                        var numOfLines = Math.floor(title.length / charLimit);
-                        var lineArray = [];
-                        var i = 0;
-                        var currentChar = 0;
-
-                        do {
-                            var titleSlice = title.slice((i * stringLen), (currentChar += charLimit));
-
-                            lineArray.push(titleSlice);
-
-                        }
-                        while (i++ < numOfLines);
-
-                        toolTipContent.html(lineArray.join("<br />"));
-                    }
-                }
-
-                //read position values and check for min/max height
-                var toolTipPointer = $("#tooltip-pointer"),
-                    toolTipWidth = actualWidth >= 240 ? 250 : null || actualWidth < 60 ? 60 : null;
-
-                //if a min or max width has been hit we need to set that here
-                if (toolTipWidth) {
-                    //set max min width here because it can change the height
-                    toolTip.width(toolTipWidth);
-
-                } else {
-                    toolTip.width(actualWidth + 10);
-                }
-
-                //reset the actualHeight and width because they can change after setting the width
-                actualHeight = toolTip.outerHeight();
-                actualWidth = toolTip.outerWidth();
-
-                //test for edge collision
-                if (offsetLeft + targetWidth / 2 < actualWidth / 2 + pointerWidth / 2) {
-                    edgeCollision = "left";
-                } else if (offsetLeft + targetWidth / 2 + actualWidth / 2 + pointerWidth / 2 > screenWidth) {
-                    edgeCollision = "right";
-                }
-
-                //test for top bottom collision
-                if (offsetTop < (actualHeight)) {
-                    topBottomCollision = "top";
-                }
-
-                //left position based on collision edge l/r             
-                if (!edgeCollision) {
-
-                    //center
-                    //the 5 pixel hard coded value is for the rounded corner padding
-                    var leftOffset = offsetLeft + targetWidth / 2 - actualWidth / 2 + 5,
-                    pointerLeftOffset = actualWidth / 2 - pointerWidth / 2 - 5;
-
-                } else {
-                    switch (edgeCollision) {
-                        case "left":
-                            //left
-                            var leftOffset = offsetLeft + targetWidth / 2 - pointerWidth,
-                        pointerLeftOffset = pointerWidth / 2;
-                            break;
-                        case "right":
-                            //right
-                            var leftOffset = offsetLeft - actualWidth + (targetWidth / 2) + pointerWidth,
-                        pointerLeftOffset = actualWidth - (pointerWidth * 1.5);
-                            break;
-                        default:
-                            return
-                    }
-                }
-
-                //top position based on collision edge
-                if (!topBottomCollision) {
-                    //default position of the tooltip is on top of the target 
-                    var topOffset = offsetTop - actualHeight - pointerHeight / 2;
-                    toolTipPointer.removeClass().addClass("bottom-tip");
-                } else {
-                    //if there is a top collision we need to move the tooltip 
-                    //to the bottom and move the arrow to the top 
-                    var topOffset = offsetTop + targetHeight + pointerHeight;
-                    toolTipPointer.removeClass().addClass("top-tip");
-                }
-
-                //position the tooltip
-                toolTip.css({
-                    "top": topOffset,
-                    "left": leftOffset
-                });
-
-                //position the pointer
-                toolTipPointer.css({
-                    "left": pointerLeftOffset
-                });
-
-            }
-
             //default positioning function
             function defaultPosition() {
                 var leftOffset = offsetLeft + targetWidth / 2 - actualWidth / 2, topOffset = offsetTop - actualHeight;
@@ -237,12 +129,8 @@
                 //set the hover content if there is none specified
                 if (options.hoverContent === "") {
                     if (title) {
-                        if (dirtyHtml.test(title)) {
-                            toolTipContent.text(title);
-                        }
-                        else {
-                            toolTipContent.html(title);                            
-                        }
+                        
+						toolTipContent.html(title);                            
 
                         //store the original title attribute and remove the title attr from the target
                         toolTip.data("title", title);
@@ -282,7 +170,7 @@
                         "display": "none"
                     }).fadeIn(options.fadeSpeed);
                 }
-                //if we arn't fading just show it
+                //if we arn"t fading just show it
                 else {
                     toolTip.css({
                         "visibility": "visible"

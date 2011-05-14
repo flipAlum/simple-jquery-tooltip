@@ -10,7 +10,7 @@ h3. Dependencies
 
 h3. Basic Use:
 
-@
+<code>
 
 <ul id="container">
 <li title="this is a tooltip"></li>
@@ -18,7 +18,7 @@ h3. Basic Use:
 
 $("#container").toolTip();
 
-@
+</code>
 
 h3. Available Options:
 
@@ -66,5 +66,3 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-

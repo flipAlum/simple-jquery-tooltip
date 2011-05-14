@@ -10,12 +10,12 @@ h3. Dependencies
 
 h3. Basic Use:
 
-Make sure at least some elements have a title attribute.
+<ul id="container">
+<li title="this is a tooltip"></li>
+</ul>
 
 <code>
-$(document).ready(function() {
-	$(container).toolTip();
-})
+$("#container").toolTip();
 </code>
 
 h3. Available Options:

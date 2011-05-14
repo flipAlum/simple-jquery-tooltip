@@ -24,7 +24,7 @@ h4. apply a fade effect to the show/hide action, always false for browsers that 
 
 * fade: true
 
-h4. time before the tooltip appears
+h4. time before the tooltip appears in ms
 
 * delay: 1000
 

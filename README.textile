@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 h3. Available Options:
 
-h4. show hide with a fade effect always false for browsers that don't support opacity
+h4. apply a fade effect to the show/hide action, always false for browsers that don't support opacity
 
 * fade: true
 

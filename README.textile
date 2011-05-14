@@ -10,29 +10,36 @@ h3. Dependencies
 
 h3. Basic Use:
 
-Make sure at least some elements have a title attribute.
+<pre><ul id="container">
+<li title="this is a tooltip">whats this?</li>
+</ul></pre>
 
-<code>
-// treat all title attributes within the container as tooltips
-$(document).ready(function() {
-	$(container).toolTip();
-})
-</code>
+<code>$("#container").toolTip();</code>
 
 h3. Available Options:
 
-//show hide with a fade effect always false for browsers that don't support opacity
+h4. apply a fade effect to the show/hide action, always false for browsers that don't support opacity
+
 * fade: true
-//time before the tooltip appears
+
+h4. time before the tooltip appears in ms
+
 * delay: 1000
-//class to add to the tooltip
+
+h4. class to add to the tooltip
+
 * elementClass: "ui-tooltip"
-//filter out unwanted elems which have a title attr
+
+h4. a list of elements that you want to keep the native title style for inside your container
+
 * filter: ".someElem, #someOtherElem"
-// wrapper template for tooltip must contain at least a
- wrapper element and a child element with id of tooltip-content
+
+h4. must contain at least a wrapper element and a child element with id of tooltip-content
+
 * template: ""
-//speed of the fade effect
+
+h4. speed of the fade effect
+
 * fadeSpeed: "fast"
 
 h3. License (MIT):
@@ -55,5 +62,3 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-

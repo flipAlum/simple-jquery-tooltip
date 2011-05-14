@@ -1,4 +1,5 @@
 h3. Summary:
+
 This is a small, fast and semantic plugin which utilizes event delegation and wraps the title attribute content so that it may be styled as a tooltip.
 The styled tooltip replaces the native browser style title display but does not permanently alter the attribute.
 The tooltip element will be positioned relative to the title containing element on mouse over.
@@ -28,7 +29,8 @@ h3. Available Options:
 * elementClass: "ui-tooltip"
 //filter out unwanted elems which have a title attr
 * filter: ".someElem, #someOtherElem"
-// wrapper template for tooltip must contain at least a wrapper element and a child element with id of tooltip-content
+// wrapper template for tooltip must contain at least a
+ wrapper element and a child element with id of tooltip-content
 * template: ""
 //speed of the fade effect
 * fadeSpeed: "fast"

@@ -11,11 +11,11 @@ h3. Dependencies
 h3. Basic Use:
 
 <code>
-
+<pre>
 <ul id="container">
 <li title="this is a tooltip"></li>
 </ul>
-
+</pre>
 $("#container").toolTip();
 
 </code>

@@ -13,7 +13,6 @@ h3. Basic Use:
 Make sure at least some elements have a title attribute.
 
 <code>
-// treat all title attributes within the container as tooltips
 $(document).ready(function() {
 	$(container).toolTip();
 })

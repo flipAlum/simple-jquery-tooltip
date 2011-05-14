@@ -20,19 +20,17 @@ $(document).ready(function() {
 
 h3. Available Options:
 
-//show hide with a fade effect always false for browsers that don't support opacity
-* fade: true
-//time before the tooltip appears
-* delay: 1000
-//class to add to the tooltip
-* elementClass: "ui-tooltip"
-//filter out unwanted elems which have a title attr
-* filter: ".someElem, #someOtherElem"
-// wrapper template for tooltip must contain at least a
- wrapper element and a child element with id of tooltip-content
-* template: ""
-//speed of the fade effect
-* fadeSpeed: "fast"
+* fade: true //show hide with a fade effect always false for browsers that don't support opacity
+
+* delay: 1000 //time before the tooltip appears
+
+* elementClass: "ui-tooltip" //class to add to the tooltip
+
+* filter: ".someElem, #someOtherElem" //filter out unwanted elems which have a title attr
+
+* template: "" // must contain at least a wrapper element and a child element with id of tooltip-content
+
+* fadeSpeed: "fast" //speed of the fade effect
 
 h3. License (MIT):
 

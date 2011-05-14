@@ -19,17 +19,29 @@ $(document).ready(function() {
 </code>
 
 h3. Available Options:
+
 h6. show hide with a fade effect always false for browsers that don't support opacity
+
 * fade: true
+
 h6. time before the tooltip appears
+
 * delay: 1000
+
 h6. class to add to the tooltip
+
 * elementClass: "ui-tooltip"
+
 h6. a list of elements that you want to keep the native title style for inside your container
+
 * filter: ".someElem, #someOtherElem"
+
 h6. must contain at least a wrapper element and a child element with id of tooltip-content
+
 * template: ""
+
 h6. speed of the fade effect
+
 * fadeSpeed: "fast"
 
 h3. License (MIT):

@@ -10,14 +10,14 @@ h3. Dependencies
 
 h3. Basic Use:
 
-<code>
+@code@
 
 <ul id="container">
 <li title="this is a tooltip"></li>
 </ul>
 
 $("#container").toolTip();
-</code>
+@code@
 
 h3. Available Options:
 

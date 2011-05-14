@@ -11,7 +11,7 @@ h3. Dependencies
 h3. Basic Use:
 
 <pre><ul id="container">
-<li title="this is a tooltip"></li>
+<li title="this is a tooltip">whats this?</li>
 </ul></pre>
 
 <code>$("#container").toolTip();</code>
